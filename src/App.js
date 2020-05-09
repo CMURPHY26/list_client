@@ -1,14 +1,18 @@
 import React from 'react';
 // import logo from './logo.svg';
 import './App.css';
+import {Route, Link} from 'react-router-dom'
 import Lists from './components/Lists.js'
 import List from './components/List.js'
 
 function App() {
   return (
     <div className="App">
-      <Lists />
-      <List />
+      <nav>
+        <Link to="/">Home</Link>
+      </nav>
+      <Route exact path="/" component={Lists} />
+      <Route path="/lists/:id" component={List} />
     </div>
   );
 }
