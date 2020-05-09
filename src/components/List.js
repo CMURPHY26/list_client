@@ -18,23 +18,37 @@ function List({match, location}) {
         getList();
     },[]) 
 
-    // const list_items = list.list_items
-    // console.log(list.list_items)
+    const handleDelete = (id) => {
+        fetch(`http://localhost:3000/list_items/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        }).then(json => {
+            let list_items = list.list_items.filter( item => item.id !== id);
+            console.log(list_items)
+            setList({...list,list_items});
+            
+        })
+    }
+    
     
     return (
         <>
         <h1>{list.name}</h1>
-        <ul>
         {list.list_items ?
             list.list_items.map( item => (
                 <div key={item.id}>
-                    <h2>{item.name}</h2>  
+                    <h2>{item.name}</h2> 
+                    <p>{item.description}</p>
+                    {!item.is_completed ? 
+                        <button onClick={() => handleDelete(item.id)}>Remove</button> : null
+                    }
+
                 </div>
             ))
         : <h1>Not Found</h1>}
-        
-        </ul>
-        
         
         </>
     )
