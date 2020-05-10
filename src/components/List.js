@@ -1,4 +1,5 @@
 import React, {useState,useEffect} from 'react'
+import CompletedList from './CompletedList.js'
 
 let baseURL = process.env.REACT_APP_BASEURL
 
@@ -87,22 +88,7 @@ function List({match, location}) {
                         )
                     : <h1>Not Found</h1>}
                 </div>
-                <div className="completed-container">
-                    {list.list_items ? 
-                        list.list_items.map( item => 
-                            <div className="item" key={item.id}>
-                                {item.is_completed ? 
-                                    <>
-                                        <h2 className="completed-item">{item.name}</h2> 
-                                            <button onClick={() => handleComplete(item)}>+</button>
-                                            <button onClick={() => handleDelete(item.id)}>Remove</button>
-                                    </>
-                                : null }
-                            
-                            </div>
-                        )
-                    : <h1>Not Found</h1>}
-                </div>
+                <CompletedList listItems={list.list_items} handleComplete={handleComplete} handleDelete={handleDelete}/>
             </div>
         </>
     )
