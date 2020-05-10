@@ -12,8 +12,6 @@ html {
   text-align: center;
 }
 
-
-
 .App-logo {
   height: 40vmin;
   pointer-events: none;
@@ -53,7 +51,8 @@ html {
   width: 75%;
   margin: auto;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-evenly;
+  flex-wrap: wrap;
 }
 
 .list-container {
@@ -63,7 +62,6 @@ html {
   justify-content: space-around;
   flex-wrap: wrap;
 }
-
 
 .completed-item {
   text-decoration: line-through;
@@ -77,19 +75,25 @@ html {
 }
 
 
-.item-container {
+.item-container, .completed-container  {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  width: 35%;
-}
-
-.completed-container {
-  width: 35%;
+  align-items: center;
+  width: 250px;
+  margin: 5px;
 }
 
 .item {
   margin: 10px;
+  width: 225px;
+  height: 225px;
   background: rgba(0,0,0,.2);
   padding: 10px;
+}
+
+@media only screen and (max-width: 600px) {
+  .container {
+    width: 95%;
+  }
 }

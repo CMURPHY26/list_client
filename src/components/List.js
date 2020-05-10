@@ -13,7 +13,6 @@ function List({listItems, handleComplete, handleDelete}) {
 
     }
     return (
-        <>
             <div className="item-container">
                 {listItemArr.map( item => (
                     <div className="item" key={item.id}>
@@ -26,7 +25,6 @@ function List({listItems, handleComplete, handleDelete}) {
                         </div>
                 ))}
             </div>
-        </>
     )
 }
 

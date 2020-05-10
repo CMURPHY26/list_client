@@ -1,6 +1,6 @@
 import React from 'react';
 // import logo from './logo.svg';
-import './App.css';
+import './App.scss';
 import {Route, Link} from 'react-router-dom'
 import Lists from './components/Lists.js'
 import ListContainer from './components/ListContainer.js'

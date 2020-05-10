@@ -12,7 +12,6 @@ function CompletedList({listItems, handleComplete, handleDelete}) {
         });
     }
     return (
-        <>
             <div className="completed-container">
                 {completedListItems.map( item => 
                 
@@ -24,7 +23,6 @@ function CompletedList({listItems, handleComplete, handleDelete}) {
                     )
                }
             </div>
-        </>
     )
 }
 
