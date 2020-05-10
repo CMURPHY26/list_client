@@ -3,7 +3,7 @@ import React from 'react';
 import './App.css';
 import {Route, Link} from 'react-router-dom'
 import Lists from './components/Lists.js'
-import List from './components/List.js'
+import ListContainer from './components/ListContainer.js'
 
 function App() {
   return (
@@ -12,7 +12,7 @@ function App() {
         <Link to="/">Home</Link>
       </nav>
       <Route exact path="/" component={Lists} />
-      <Route path="/lists/:id" component={List} />
+      <Route path="/lists/:id" component={ListContainer} />
     </div>
   );
 }

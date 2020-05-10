@@ -79,14 +79,19 @@ html {
 }
 
 
-/* .item-container {
+.item-container {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-} */
-/* 
+  flex-direction: column;
+  justify-content: flex-start;
+  width: 35%;
+}
+
+.completed-container {
+  width: 35%;
+}
+
 .item {
   margin: 10px;
   background: rgba(0,0,0,.2);
   padding: 10px;
-} */
+}

@@ -3,18 +3,18 @@ import React, {useState,useEffect} from 'react'
 
 
 function CompletedList({listItems, handleComplete, handleDelete}) {
-    let list_items = []
+    let completedListItems = []
     if(listItems) {
         listItems.map(item => {
             if(item.is_completed) {
-                list_items.push(item)   
+                completedListItems.push(item)   
             }
         });
     }
     return (
         <>
             <div className="completed-container">
-                {list_items.map( item => 
+                {completedListItems.map( item => 
                 
                         <div className="item" key={item.id}>
                                     <h2 className="completed-item">{item.name}</h2> 
