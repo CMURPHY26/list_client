@@ -1,6 +1,7 @@
 import React, {useState,useEffect} from 'react'
 import CompletedList from './CompletedList.js'
 import List from './List.js'
+import Form from './Form.js'
 
 let baseURL = process.env.REACT_APP_BASEURL
 
@@ -14,6 +15,7 @@ if (process.env.NODE_ENV === 'development') {
 function ListContainer({match, location}) {
     const list_id = match.params.id;
     const [list, setList] = useState({});
+    const [formShow, setFormShow] = useState(false);
     
     const getList = () => {
         fetch(`${baseURL}/lists/${list_id}`)
@@ -69,6 +71,13 @@ function ListContainer({match, location}) {
         <>
             <div className="list-header">
                 <h1>{list.name}</h1>
+                {!formShow ? 
+                <button onClick={() => setFormShow(true) }>Add an Item</button>
+                : <>
+                <Form />
+                <button onClick={() => setFormShow(false) }>Close Form</button>
+                </>
+                }
             </div>
             <div className="container">
                 <List listItems={list.list_items} handleComplete={handleComplete} handleDelete={handleDelete}/>

@@ -46,8 +46,8 @@ return (
                 <div className="list-lists" key={list.id}>
                     <Link to={`/lists/${list.id}`}>
                     <h2>{list.name}</h2>
-                    </Link>
                     <h3>Category: {list.category}</h3>
+                    </Link>
                     <button onClick={() => handleDelete(list.id)}>X</button>
                 </div>  
             ))}
