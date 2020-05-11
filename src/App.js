@@ -8,9 +8,12 @@ import ListContainer from './components/ListContainer.js'
 function App() {
   return (
     <div className="App">
-      <nav>
-        <Link to="/">Home</Link>
-      </nav>
+      <header>
+        <h1 id="logo">MyList</h1>
+        <nav>
+          <Link to="/">Home</Link>
+        </nav>
+      </header>
       <Route exact path="/" component={Lists} />
       <Route path="/lists/:id" component={ListContainer} />
     </div>

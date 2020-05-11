@@ -17,8 +17,8 @@ function CompletedList({listItems, handleComplete, handleDelete}) {
                 
                         <div className="item" key={item.id}>
                                     <h2 className="completed-item">{item.name}</h2> 
-                                        <button onClick={() => handleComplete(item)}>&nbsp;+&nbsp;</button>
-                                        <button onClick={() => handleDelete(item.id)}>Remove</button>
+                                        <button className="add-item" onClick={() => handleComplete(item)}>&#10010;</button>
+                                        <button onClick={() => handleDelete(item.id)}>Delete</button>
                         </div>
                     )
                }

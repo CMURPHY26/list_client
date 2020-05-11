@@ -2,6 +2,14 @@ import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom' 
 
 
+let baseURL = process.env.REACT_APP_BASEURL
+
+if (process.env.NODE_ENV === 'development') {
+    baseURL = 'http://localhost:3000'
+  } else {
+    baseURL = ''
+  }
+
 function Lists(props) {
     const [data, setData] = useState([])
     
@@ -17,10 +25,22 @@ function Lists(props) {
         getLists();
     }, []) 
 
+    const handleDelete = (id) => {
+        fetch(`${baseURL}/lists/${id}`, {
+            method: "DELETE",
+            headers: {
+                'Accept': 'application/json, text/plain, */*',
+                'Content-Type': 'application/json'
+            }
+        }).then(json => {
+            let lists = data.filter( item => item.id !== id);
+            // console.log(list_items)
+            setData(lists);
+            
+        })
+    }
     
 return (
-    <>
-        <h1>Lists</h1>
         <div className="list-container">
             {data.map(list => (
                 <div className="list-lists" key={list.id}>
@@ -28,10 +48,10 @@ return (
                     <h2>{list.name}</h2>
                     </Link>
                     <h3>Category: {list.category}</h3>
+                    <button onClick={() => handleDelete(list.id)}>X</button>
                 </div>  
             ))}
         </div>
-    </>
 )
 }
 
