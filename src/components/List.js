@@ -20,7 +20,7 @@ function List({listItems, handleComplete, handleDelete}) {
                         <p>{item.description}</p>
                         <button onClick={() => handleDelete(item.id)}>Remove</button>
                         {!item.is_completed ? 
-                            <button onClick={() => handleComplete(item)}>&#10004;</button> 
+                            <button onClick={() => handleComplete(item)}>&nbsp;&#10004;&nbsp;</button> 
                         : null}
                         </div>
                 ))}
