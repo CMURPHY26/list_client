@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom' 
+import ListsForm from './ListsForm.js'
 
 
 let baseURL = process.env.REACT_APP_BASEURL
@@ -11,7 +12,8 @@ if (process.env.NODE_ENV === 'development') {
   }
 
 function Lists(props) {
-    const [data, setData] = useState([])
+    const [data, setData] = useState([]);
+    const [formShow, setFormShow] = useState(false);
     
 
    const getLists = () => {
@@ -41,7 +43,17 @@ function Lists(props) {
     }
     
 return (
-        <div className="list-container">
+    <>
+        <div className="form-container">
+            {!formShow ? 
+                <button onClick={() => setFormShow(true)}>Add a List</button>
+            : <>
+                <ListsForm />
+                <button onClick={() => setFormShow(false)}>Close Form</button>
+              </>
+            }
+        </div>
+        <div className="lists-container">
             {data.map(list => (
                 <div className="list-lists" key={list.id}>
                     <Link to={`/lists/${list.id}`}>
@@ -52,6 +64,7 @@ return (
                 </div>  
             ))}
         </div>
+    </>
 )
 }
 
