@@ -20,13 +20,36 @@ function ListContainer({match, location}) {
     const getList = () => {
         fetch(`${baseURL}/lists/${list_id}`)
         .then(response => response.json())
-        .then(json => setList(json))
+        .then(json =>{
+            console.log(json)
+            setList(json)
+        } )
         .catch(err => console.log(err))
     }
     
     useEffect( () => {
         getList();
     },[]) 
+
+
+    const handleAdd = (event, formInputs) => {
+        event.preventDefault();
+        fetch(`${baseURL}/lists/${list_id}/list_items`, {
+          body: JSON.stringify(formInputs),
+          method: "POST",
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          }
+        }).then(createdListItem => createdListItem.json())
+        .then(jsonedListItem => {
+            let list_items = [jsonedListItem,...list.list_items];
+
+            // console.log(list_items)
+            setList({...list,list_items});
+        })
+        .catch(error => console.log(error))
+      }
     
 
 
@@ -74,7 +97,7 @@ function ListContainer({match, location}) {
                 {!formShow ? 
                 <button onClick={() => setFormShow(true) }>Add an Item</button>
                 : <>
-                <Form />
+                <Form listId={list_id} handleSubmit={handleAdd} />
                 <button onClick={() => setFormShow(false) }>Close Form</button>
                 </>
                 }

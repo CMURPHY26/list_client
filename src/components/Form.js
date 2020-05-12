@@ -6,16 +6,32 @@ function Form(props) {
     const [input, setInput] = useState({
         name: "",
         description: "",
+        list_id: props.listId
     });
 
     const handleChange = (e) => {
         setInput({...input, [e.target.id]: e.target.value})
     }
 
+    const handleSubmit = (e) => {
+
+        e.preventDefault();
+ 
+        const listItem = {
+            name: input.name,
+            description: input.description,
+            list_id: input.list_id
+        }
+
+        console.log(listItem)
+        
+        props.handleSubmit(e, listItem);
+        setInput({name:"",desciption:"",list_id:props.listItem});
+     }
 
     return (
         <>
-        <form>
+        <form onSubmit={handleSubmit}>
         <Input
           handleChange={handleChange}
           name={"name"}
