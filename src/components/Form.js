@@ -26,7 +26,7 @@ function Form(props) {
         console.log(listItem)
         
         props.handleSubmit(e, listItem);
-        setInput({name:"",desciption:"",list_id:props.listItem});
+        setInput({...input,name:"",description:""});
      }
 
     return (

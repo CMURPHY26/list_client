@@ -71,6 +71,7 @@ function ListContainer({match, location}) {
     const handleComplete = (item) => {
         // event.preventDefault()
         // console.log('in it to win it')
+        item.is_completed = !item.is_completed;
         fetch(`${baseURL}/list_items/${item.id}`, {
             body: JSON.stringify({is_completed: !item.is_completed}),
             method: 'PATCH',
@@ -79,10 +80,11 @@ function ListContainer({match, location}) {
         'Content-Type': 'application/json'
         }
         })
-        .then(updatedListItem => {
-        // go wild
-
-        getList()
+        .then(response => {
+            console.log(item)
+            let newListItems = [...list.list_items,item];
+            let updatedList = {...list,newListItems}
+            setList(updatedList);
         })
         .catch(error => console.log(error))
     }
