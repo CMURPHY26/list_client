@@ -17,15 +17,32 @@ function Lists(props) {
     
 
    const getLists = () => {
-        fetch('http://localhost:3000/lists')
+        fetch(`${baseURL}/lists`)
         .then(response => response.json())
-        .then(json => setData(json))
+        .then(json => {
+            console.log(json);
+            setData(json)
+        })
         .catch(err => console.log(err))
     }
 
     useEffect( () => {
         getLists();
     }, []) 
+
+    const handleAdd = (event, formInputs) => {
+        event.preventDefault();
+        fetch(`${baseURL}/lists`, {
+          body: JSON.stringify(formInputs),
+          method: "POST",
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          }
+        }).then(createdList => createdList.json())
+        .then(jsonedList => setData([...data,jsonedList]))
+        .catch(error => console.log(error))
+      }
 
     const handleDelete = (id) => {
         fetch(`${baseURL}/lists/${id}`, {
@@ -48,13 +65,14 @@ return (
             {!formShow ? 
                 <button onClick={() => setFormShow(true)}>Add a List</button>
             : <>
-                <ListsForm />
+                <ListsForm handleSubmit={handleAdd} />
                 <button onClick={() => setFormShow(false)}>Close Form</button>
               </>
             }
         </div>
         <div className="lists-container">
-            {data.map(list => (
+            {data ?
+            data.map(list => (
                 <div className="list-lists" key={list.id}>
                     <Link to={`/lists/${list.id}`}>
                     <h2>{list.name}</h2>
@@ -62,7 +80,7 @@ return (
                     </Link>
                     <button onClick={() => handleDelete(list.id)}>X</button>
                 </div>  
-            ))}
+            )): null}
         </div>
     </>
 )

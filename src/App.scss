@@ -141,7 +141,7 @@ html {
 
 
 
-@media only screen and (max-width: 600px) {
+@media only screen and (max-width: 550px) {
   .container {
     width: 95%;
   }
@@ -155,9 +155,11 @@ html {
   }
 }
 
-#logo {
+.logo {
   font-family: 'Permanent Marker', sans-serif;
-  font-size: 3em;
+  font-size: 2.5em;
+  text-decoration: none;
+  color: black;
 }
 
 .add-item {

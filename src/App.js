@@ -9,9 +9,10 @@ function App() {
   return (
     <div className="App">
       <header>
-        <h1 id="logo">MyList</h1>
         <nav>
-          <Link to="/">Home</Link>
+          <Link className="logo" to="/">
+              <h1>MyList</h1>
+          </Link>
         </nav>
       </header>
       <Route exact path="/" component={Lists} />
