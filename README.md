@@ -19,8 +19,8 @@ Full-stack application built on a Ruby on Rails, PostgreSQL API Back-End with a 
 
 ### Deployed on:
 <b>Heroku</b>
-- [MyList](https://sass-lang.com/)
-https://appmylist.herokuapp.com/
+- [MyList](https://appmylist.herokuapp.com/)
+
 
 
 ### Installation
