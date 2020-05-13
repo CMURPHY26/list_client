@@ -21,7 +21,7 @@ function ListsForm(props) {
 
     return (
         <>
-        <h1>This is my Lists Form</h1>
+        <h2>Add a List</h2>
         <form onSubmit={handleSubmit}>
         <input
           onChange={e => setName(e.target.value)}

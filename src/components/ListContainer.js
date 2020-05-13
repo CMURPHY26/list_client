@@ -16,6 +16,12 @@ function ListContainer({match, location}) {
     const list_id = match.params.id;
     const [list, setList] = useState({});
     const [formShow, setFormShow] = useState(false);
+    const [item, setItem] = useState({
+        name:"",
+        description:"",
+        list_id: list_id
+
+    })
     
     const getList = () => {
         fetch(`${baseURL}/lists/${list_id}`)
@@ -50,6 +56,28 @@ function ListContainer({match, location}) {
         })
         .catch(error => console.log(error))
       }
+
+      const handleUpdate = (event, item) => {
+        event.preventDefault();
+        fetch(`${baseURL}/list_items/${item.id}`, {
+          body: JSON.stringify(item),
+          method: "PATCH",
+          headers: {
+            'Accept': 'application/json, text/plain, */*',
+            'Content-Type': 'application/json'
+          }
+        }).then(createdListItem => createdListItem.json())
+        .then(jsonedListItem => {
+            
+            let filteredListItems = list.list_items.filter( item => item.id !== jsonedListItem.id);
+
+            let list_items = [jsonedListItem,...filteredListItems];
+
+            // console.log(list_items)
+            setList({...list,list_items});
+        })
+        .catch(error => console.log(error))
+      }
     
 
 
@@ -69,8 +97,6 @@ function ListContainer({match, location}) {
     }
 
     const handleComplete = (item) => {
-        // event.preventDefault()
-        // console.log('in it to win it')
         item.is_completed = !item.is_completed;
         fetch(`${baseURL}/list_items/${item.id}`, {
             body: JSON.stringify({is_completed: !item.is_completed}),
@@ -88,9 +114,6 @@ function ListContainer({match, location}) {
         })
         .catch(error => console.log(error))
     }
-
-
-    // console.log(listItems)
     
     return (
         <>
@@ -99,13 +122,13 @@ function ListContainer({match, location}) {
                 {!formShow ? 
                 <button onClick={() => setFormShow(true) }>Add an Item</button>
                 : <>
-                <Form listId={list_id} handleSubmit={handleAdd} />
+                <Form item={item} listId={list_id} handleSubmit={handleAdd} />
                 <button onClick={() => setFormShow(false) }>Close Form</button>
                 </>
                 }
             </div>
             <div className="container">
-                <List listItems={list.list_items} handleComplete={handleComplete} handleDelete={handleDelete}/>
+                <List listItems={list.list_items} handleComplete={handleComplete} handleDelete={handleDelete} handleUpdate={handleUpdate}/>
                 <CompletedList listItems={list.list_items} handleComplete={handleComplete} handleDelete={handleDelete}/>
             </div>
         </>

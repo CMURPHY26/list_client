@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Input from './Input.js'
 
 
 function Form(props) {
+    const {item, toggleForm} = props
     const [input, setInput] = useState({
-        name: "",
-        description: "",
-        list_id: props.listId
+        name: item.name,
+        description: item.description,
+        list_id: item.listId
     });
-
+ 
     const handleChange = (e) => {
         setInput({...input, [e.target.id]: e.target.value})
     }
@@ -20,17 +21,19 @@ function Form(props) {
         const listItem = {
             name: input.name,
             description: input.description,
-            list_id: input.list_id
+            list_id: item.list_id,
+            id: item.id
         }
-
         console.log(listItem)
-        
         props.handleSubmit(e, listItem);
         setInput({...input,name:"",description:""});
+        toggleForm();
      }
 
     return (
         <>
+        {item.name !== "" ? <h2>Update this List Item</h2> : <h2>Add a List Item</h2>}
+        
         <form onSubmit={handleSubmit}>
         <Input
           handleChange={handleChange}
@@ -50,7 +53,7 @@ function Form(props) {
         />
         <input
           type="submit"
-          value="Submit"
+          value={item.name !== "" ? "Update" : "Submit"}
         />
       </form>
         </>

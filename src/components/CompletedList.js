@@ -16,9 +16,11 @@ function CompletedList({listItems, handleComplete, handleDelete}) {
                 {completedListItems.map( item => 
                 
                         <div className="item" key={item.id}>
-                                    <h2 className="completed-item">{item.name}</h2> 
+                                    <h2 className="completed-item">{item.name}</h2>
+                                    <div className="list-item-buttons">
                                         <button className="add-item" onClick={() => handleComplete(item)}>&#10010;</button>
                                         <button onClick={() => handleDelete(item.id)}>Delete</button>
+                                    </div>
                         </div>
                     )
                }

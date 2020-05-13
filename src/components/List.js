@@ -1,8 +1,11 @@
-import React from 'react'
+import React, {useState} from 'react'
+import ListItem from './ListItem.js'
 
 
 
-function List({listItems, handleComplete, handleDelete}) {
+function List(props) {
+    const {listItems, handleComplete, handleDelete, handleUpdate} = props;
+
     let listItemArr = []
     if(listItems) {
         listItems.map(item => {
@@ -14,16 +17,9 @@ function List({listItems, handleComplete, handleDelete}) {
     }
     return (
             <div className="item-container">
-                {listItemArr.map( item => (
-                    <div className="item" key={item.id}>
-                        <h2>{item.name}</h2> 
-                        <p>{item.description}</p>
-                        {!item.is_completed ? 
-                            <button onClick={() => handleComplete(item)}>&nbsp;&#10004;&nbsp;</button> 
-                            : null}
-                            <button onClick={() => handleDelete(item.id)}>Delete</button>
-                        </div>
-                ))}
+                {listItemArr.map( item => 
+                <ListItem key={item.id} item={item} handleUpdate={handleUpdate} handleComplete={handleComplete} handleDelete={handleDelete}/>
+                )}
             </div>
     )
 }
