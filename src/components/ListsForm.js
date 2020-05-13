@@ -17,11 +17,14 @@ function ListsForm(props) {
        props.handleSubmit(e, list);
        setName("");
        setCategory("");
+       props.setFormShow(false)
     }
 
     return (
         <>
-        <h2>Add a List</h2>
+        <div className="form-title">
+          <h2>Add a List</h2> 
+        </div>
         <form onSubmit={handleSubmit}>
         <input
           onChange={e => setName(e.target.value)}

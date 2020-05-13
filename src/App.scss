@@ -22,6 +22,7 @@ html {
   pointer-events: none;
 }
 
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -62,7 +63,7 @@ html {
 
 .lists-container {
   width: 75%;
-  margin: auto;
+  margin: 2em auto;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
@@ -87,6 +88,7 @@ html {
   h3 {
     font-family: "Varela";
     font-weight: 600;
+    letter-spacing: .05em;
   }
 
   a {
@@ -118,7 +120,8 @@ html {
   justify-content: flex-start;
   align-items: center;
   width: 250px;
-  margin: 5px;
+  margin: 2em 5px;
+
 }
 
 .item {
@@ -170,6 +173,72 @@ html {
   color: black;
 }
 
+.app-header {
+  width: 250px;
+  margin: auto;
+  background: rgba(4, 224, 196, 0.5);
+  box-shadow: 2px 2px 2px teal;
+}
+
 .add-item {
   width: 35px;
 }
+
+.list-header, .form-container {
+  form {
+    padding: 10px;
+    input {
+      font-size: 1.25em;
+      padding: 5px;
+      margin: 5px;
+      box-shadow: 2px 2px 2px teal;
+    }
+    input[type=submit] {
+      font-size: 1.25em;
+      border: none; /*rewriting standard style, it is necessary to be able to change the size*/
+      height: 50px;
+      width: 100px;
+      box-shadow: 2px 2px 2px teal;
+      background-color: white;
+    }
+  }
+      button {
+        background-color: white;
+        font-size: 1.25em;
+        box-shadow: 2px 2px 2px teal;
+      }
+}
+
+.lists-form {
+  background: rgba(0,0,0,.3);
+  padding: 10px;
+  max-width:500px;
+  margin: auto;
+  box-shadow: 2px 2px 2px teal;
+}
+
+.form-title {
+  background-color: white;
+  font-size: 1.25em;
+  box-shadow: 2px 2px 2px teal;
+  width: 200px;
+  margin: auto;
+}
+
+#name {
+  width: 335px;
+}
+
+.category-name {
+  background-color: rgba(255,255,255,.8);
+  box-shadow: 2px 2px 2px teal;
+  max-width: 200px;
+  max-height: 100px;
+  margin: auto;
+
+  h3 {
+    margin: 0;
+    padding: 10px;
+  }
+}
+

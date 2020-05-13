@@ -3,7 +3,7 @@ import Input from './Input.js'
 
 
 function Form(props) {
-    const {item, toggleForm} = props
+    const {item, setFormShow} = props
     const [input, setInput] = useState({
         name: item.name,
         description: item.description,
@@ -27,12 +27,18 @@ function Form(props) {
         console.log(listItem)
         props.handleSubmit(e, listItem);
         setInput({...input,name:"",description:""});
-        toggleForm();
+        setFormShow(false);
      }
 
     return (
         <>
-        {item.name !== "" ? <h2>Update this List Item</h2> : <h2>Add a List Item</h2>}
+        <div className="form-title">
+          {item.name !== "" ?
+            <h2>Update this List Item</h2> 
+          : 
+          <h2>Add a List Item</h2>
+          }
+        </div>
         
         <form onSubmit={handleSubmit}>
         <Input
@@ -52,6 +58,7 @@ function Form(props) {
           id={"description"}
         />
         <input
+          id="submit"
           type="submit"
           value={item.name !== "" ? "Update" : "Submit"}
         />

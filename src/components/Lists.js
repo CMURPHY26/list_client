@@ -64,10 +64,10 @@ return (
         <div className="form-container">
             {!formShow ? 
                 <button onClick={() => setFormShow(true)}>Add a List</button>
-            : <>
-                <ListsForm handleSubmit={handleAdd} />
+            : <div className="lists-form">
+                <ListsForm setFormShow={setFormShow} handleSubmit={handleAdd} />
                 <button onClick={() => setFormShow(false)}>Close Form</button>
-              </>
+              </div>
             }
         </div>
         <div className="lists-container">
@@ -76,7 +76,9 @@ return (
                 <div className="list-lists" key={list.id}>
                     <Link to={`/lists/${list.id}`}>
                     <h2>{list.name}</h2>
-                    <h3>Category: {list.category}</h3>
+                    <div className="category-name">
+                        <h3>Category: {list.category}</h3>
+                    </div>
                     </Link>
                     <button onClick={() => handleDelete(list.id)}>X</button>
                 </div>  

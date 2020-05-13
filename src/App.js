@@ -8,7 +8,7 @@ import ListContainer from './components/ListContainer.js'
 function App() {
   return (
     <div className="App">
-      <header>
+      <header className="app-header">
         <nav>
           <Link className="logo" to="/">
               <h1>MyList</h1>

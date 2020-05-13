@@ -120,11 +120,11 @@ function ListContainer({match, location}) {
             <div className="list-header">
                 <h1>{list.name}</h1>
                 {!formShow ? 
-                <button onClick={() => setFormShow(true) }>Add an Item</button>
-                : <>
-                <Form item={item} listId={list_id} handleSubmit={handleAdd} />
-                <button onClick={() => setFormShow(false) }>Close Form</button>
-                </>
+                    <button onClick={() => setFormShow(true) }>Add an Item</button>
+                : <div className="lists-form">
+                    <Form setFormShow={setFormShow} item={item} listId={list_id} handleSubmit={handleAdd} />
+                    <button onClick={() => setFormShow(false) }>Close Form</button>
+                </div>
                 }
             </div>
             <div className="container">
