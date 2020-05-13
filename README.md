@@ -9,7 +9,7 @@ MyList is a universal post-it style list app that allows users to create lists a
 - [SASS](https://sass-lang.com/)
 
 ## Dev Description
-Full-stack application built on a Ruby on Rails, PostgreSQL API Back-End with a React Front-End. Two models were used: Lists & List Items. There is a one-to-many relationship between lists and list_items. Lists have Create, Read and Destroy functionality. List items have full CRUD functionality and a priority column has been added to sort the list items on the list pages. SASS was used to loop through different colors for the post-it notes and to nest CSS. React Router was configured for the routing of the list and list item pages.
+Full-stack application built on a Ruby on Rails, PostgreSQL API Back-End with a React Front-End. Two models were used: Lists & List Items. There is a one-to-many relationship between lists and list_items. Lists have Create, Read and Destroy functionality. List items have full CRUD functionality and a priority column has been added to sort the list items on the list pages. SASS was used to loop through different colors for the post-it notes and to nest CSS. React Router was configured for the routing of the list and list item pages. CORS was configured so only this front-end can access the information from my API server.
 
 
 ### Link to Back-End
