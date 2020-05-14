@@ -40,6 +40,7 @@ function ListContainer({match, location}) {
 
     const handleAdd = (event, formInputs) => {
         event.preventDefault();
+        setFormShow(!formShow);
         fetch(`${baseURL}/lists/${list_id}/list_items`, {
           body: JSON.stringify(formInputs),
           method: "POST",

@@ -17,6 +17,10 @@ function Form(props) {
     const handleSubmit = (e) => {
 
         e.preventDefault();
+
+        if(item.name !== "") {
+          toggleForm();
+        }
  
         const listItem = {
             name: input.name,
@@ -27,7 +31,6 @@ function Form(props) {
         console.log(listItem)
         props.handleSubmit(e, listItem);
         setInput({...input,name:"",description:""});
-        toggleForm();
      }
 
     return (
