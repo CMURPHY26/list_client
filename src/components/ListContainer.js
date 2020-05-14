@@ -68,15 +68,13 @@ function ListContainer({match, location}) {
           }
         }).then(createdListItem => createdListItem.json())
         .then(jsonedListItem => {
-            
             let filteredListItems = list.list_items.filter( item => item.id !== jsonedListItem.id);
 
             let list_items = [jsonedListItem,...filteredListItems];
 
             // console.log(list_items)
             setList({...list,list_items});
-        })
-        .catch(error => console.log(error))
+        }).catch(error => console.log(error))
       }
     
 
@@ -122,7 +120,7 @@ function ListContainer({match, location}) {
                 {!formShow ? 
                     <button onClick={() => setFormShow(true) }>Add an Item</button>
                 : <div className="lists-form">
-                    <Form setFormShow={setFormShow} item={item} listId={list_id} handleSubmit={handleAdd} />
+                    <Form item={item} listId={list_id} handleSubmit={handleAdd} />
                     <button onClick={() => setFormShow(false) }>Close Form</button>
                 </div>
                 }

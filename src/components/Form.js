@@ -3,7 +3,7 @@ import Input from './Input.js'
 
 
 function Form(props) {
-    const {item, setFormShow} = props
+    const {item, toggleForm} = props
     const [input, setInput] = useState({
         name: item.name,
         description: item.description,
@@ -27,7 +27,7 @@ function Form(props) {
         console.log(listItem)
         props.handleSubmit(e, listItem);
         setInput({...input,name:"",description:""});
-        setFormShow(false);
+        toggleForm();
      }
 
     return (
