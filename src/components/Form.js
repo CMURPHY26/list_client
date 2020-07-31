@@ -26,7 +26,8 @@ function Form(props) {
             name: input.name,
             description: input.description,
             list_id: item.list_id,
-            id: item.id
+            id: item.id,
+            is_completed: false
         }
         console.log(listItem)
         props.handleSubmit(e, listItem);
