@@ -1,4 +1,4 @@
-import React, {useState} from 'react'
+import React from 'react'
 import ListItem from './ListItem.js'
 
 
@@ -8,7 +8,7 @@ function List(props) {
 
     let listItemArr = []
     if(listItems) {
-        listItems.map(item => {
+        listItems.forEach(item => {
             if(!item.is_completed) {
                 listItemArr.push(item)   
             }

@@ -98,7 +98,7 @@ function ListContainer({match, location}) {
     const handleComplete = (item) => {
         item.is_completed = !item.is_completed;
         fetch(`${baseURL}/list_items/${item.id}`, {
-            body: JSON.stringify({is_completed: !item.is_completed}),
+            body: JSON.stringify({is_completed: item.is_completed}),
             method: 'PATCH',
         headers: {
         'Accept': 'application/json, text/plain, */*',

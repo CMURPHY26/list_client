@@ -5,7 +5,7 @@ import React from 'react'
 function CompletedList({listItems, handleComplete, handleDelete}) {
     let completedListItems = []
     if(listItems) {
-        listItems.map(item => {
+        listItems.forEach(item => {
             if(item.is_completed) {
                 completedListItems.push(item)   
             }
